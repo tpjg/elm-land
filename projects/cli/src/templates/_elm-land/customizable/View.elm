@@ -31,9 +31,10 @@ toBrowserDocument :
     { shared : Shared.Model.Model
     , route : Route ()
     , view : View msg
+    , opts : Ui.Options msg
     }
     -> Browser.Document msg
-toBrowserDocument { view } =
+toBrowserDocument { view, opts } =
     { title = view.title
     , body = view.body
     }

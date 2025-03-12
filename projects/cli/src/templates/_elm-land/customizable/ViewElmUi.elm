@@ -13,7 +13,7 @@ module View exposing
 -}
 
 import Browser
-import Element
+import Ui
 import Route exposing (Route)
 import Shared.Model
 
@@ -32,11 +32,12 @@ toBrowserDocument :
     { shared : Shared.Model.Model
     , route : Route ()
     , view : View msg
+    , opts : Ui.Options msg
     }
     -> Browser.Document msg
-toBrowserDocument { view } =
+toBrowserDocument { view, opts } =
     { title = view.title
-    , body = [ Element.layout view.attributes view.element ]
+    , body = [ Ui.layout opts view.attributes view.element ]
     }
 
 
