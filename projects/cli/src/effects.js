@@ -221,7 +221,7 @@ let runServer = async (options) => {
 
     // Run the vite server on options.port
     server = await createServer({
-      configFile: false,
+      configFile: "vite.config.js",
       root: process.cwd(),
       publicDir: join(process.cwd(), 'static'),
       envDir: process.cwd(),
@@ -494,7 +494,7 @@ const build = async (config) => {
   // Build app in dist folder
   try {
     await _build({
-      configFile: false,
+      configFile: "vite.prod.config.js",
       root: join(process.cwd(), '.elm-land', 'server'),
       publicDir: join(process.cwd(), 'static'),
       build: { outDir: '../../dist' },
