@@ -20,8 +20,8 @@ import Shared.Model
 
 type alias View msg =
     { title : String
-    , attributes : List (Element.Attribute msg)
-    , element : Element.Element msg
+    , attributes : List (Ui.Attribute msg)
+    , element : Ui.Element msg
     }
 
 
@@ -35,7 +35,7 @@ toBrowserDocument :
     , opts : Ui.Options msg
     }
     -> Browser.Document msg
-toBrowserDocument { view, opts } =
+toBrowserDocument { shared, route, view, opts } =
     { title = view.title
     , body = [ Ui.layout opts view.attributes view.element ]
     }
@@ -46,8 +46,8 @@ toBrowserDocument { view, opts } =
 map : (msg1 -> msg2) -> View msg1 -> View msg2
 map fn view =
     { title = view.title
-    , attributes = List.map (Element.mapAttribute fn) view.attributes
-    , element = Element.map fn view.element
+    , attributes = List.map (Ui.mapAttribute fn) view.attributes
+    , element = Ui.map fn view.element
     }
 
 
@@ -58,7 +58,7 @@ none : View msg
 none =
     { title = ""
     , attributes = []
-    , element = Element.none
+    , element = Ui.none
     }
 
 
@@ -73,5 +73,5 @@ fromString : String -> View msg
 fromString moduleName =
     { title = moduleName
     , attributes = []
-    , element = Element.text moduleName
+    , element = Ui.text moduleName
     }

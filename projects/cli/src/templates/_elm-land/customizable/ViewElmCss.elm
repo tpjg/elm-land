@@ -31,7 +31,7 @@ toBrowserDocument :
     { shared : Shared.Model.Model
     , route : Route ()
     , view : View msg
-    , opts : Ui.Options msg
+    , opts : any
     }
     -> Browser.Document msg
 toBrowserDocument { view, opts } =
